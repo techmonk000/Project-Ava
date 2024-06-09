@@ -83,7 +83,7 @@ def CTCLoss(y_true,y_pred):
     input_length = input_length * tf.ones(shape=(batch_len, 1), dtype="int64")
     label_length = label_length * tf.ones(shape=(batch_len, 1), dtype="int64") 
     
-    loss = keras.backend.ctc_batch_cost(y_true,y_pred, input_length, label_length)
+    loss = tf.keras.backend.ctc_batch_cost(y_true,y_pred, input_length, label_length)
     return loss 
 
 def build_model(input_dim, output_dim, rnn_layers = 5, rnn_units = 128):
