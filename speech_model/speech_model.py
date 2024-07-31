@@ -1,7 +1,9 @@
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 from faster_whisper import WhisperModel
 import speech_recognition as sr
 import time
-import os
 
 num_cores = os.cpu_count()
 
