@@ -1,16 +1,35 @@
-from transformers import AutoProcessor, BarkModel
-import scipy
-import scipy.io
+import asyncio
+import edge_tts
+import pygame
+import os
+import time
 
-processor = AutoProcessor.from_pretrained("suno/bark")
-model = BarkModel.from_pretrained("suno/bark")
+VOICES = ['en-US-GuyNeural', 'en-US-JennyNeural']
+TEXT = "Hey boss , name is ava your AI assistant that you gave voice now get ready to develop a brain for me"
+VOICE = VOICES[1]
+OUTPUT_FILE = "test.mp3"
 
-voice_preset = "v2/en_speaker_6"
+async def amain():
+    communicate = edge_tts.Communicate(TEXT, VOICE,rate='-10%')
+    await communicate.save(OUTPUT_FILE)
 
-inputs = processor("Hello, my dog is cute [laughs]", voice_preset=voice_preset)
+def play_audio(file_path):
+    pygame.mixer.init()
+    pygame.mixer.music.load(file_path)
+    pygame.mixer.music.play()
 
-audio_array = model.generate(**inputs)
-audio_array = audio_array.cpu().numpy().squeeze()
+    while pygame.mixer.music.get_busy():
+        time.sleep(1)
 
-sample_rate = model.generation_config.sample_rate
-scipy.io.wavfile.write("bark_out.wav", rate=sample_rate, data=audio_array)
+    pygame.mixer.music.unload()
+
+if __name__ == "__main__":
+    asyncio.run(amain())
+    
+    play_audio(OUTPUT_FILE)
+    
+    if os.path.exists(OUTPUT_FILE):
+        os.remove(OUTPUT_FILE)
+        print(f"{OUTPUT_FILE} has been deleted.")
+    else:
+        print(f"File {OUTPUT_FILE} not found.")
