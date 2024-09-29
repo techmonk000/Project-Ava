@@ -5,11 +5,10 @@ import os
 import time
 
 VOICES = ['en-US-GuyNeural', 'en-US-JennyNeural']
-TEXT = "Hey boss , name is ava your AI assistant that you gave voice now get ready to develop a brain for me"
-VOICE = VOICES[1]
+VOICE = VOICES[0]
 OUTPUT_FILE = "test.mp3"
 
-async def amain():
+async def amain(TEXT):
     communicate = edge_tts.Communicate(TEXT, VOICE,rate='-10%')
     await communicate.save(OUTPUT_FILE)
 
@@ -23,8 +22,8 @@ def play_audio(file_path):
 
     pygame.mixer.music.unload()
 
-if __name__ == "__main__":
-    asyncio.run(amain())
+def main(text):
+    asyncio.run(amain(text))
     
     play_audio(OUTPUT_FILE)
     
@@ -33,3 +32,5 @@ if __name__ == "__main__":
         print(f"{OUTPUT_FILE} has been deleted.")
     else:
         print(f"File {OUTPUT_FILE} not found.")
+
+main('Hey sir this is Jarvis, this is my first voice hope you like it')

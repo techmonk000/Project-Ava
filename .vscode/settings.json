@@ -5,5 +5,10 @@
         "pygame",
         "wavfile",
         "wordnet"
-    ]
+    ],
+    "python.languageServer": "Pylance",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none",
+        "reportShadowedImports": "none"
+    }
 }
