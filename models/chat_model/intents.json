@@ -1,0 +1,16 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hey jarvis","Hello","Hola","Hi Jarvis","Hi","What's up Jarvis","Jarvis get up","namaste"],
+      "responses": []
+
+    },
+    {
+      "tag": "greeting",
+      "patterns": [],
+      "responses": []
+
+    }
+]
+}
