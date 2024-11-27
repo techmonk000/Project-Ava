@@ -22,7 +22,7 @@ def play_audio(file_path):
 
     pygame.mixer.music.unload()
 
-def main(text):
+def speak(text):
     asyncio.run(amain(text))
     
     play_audio(OUTPUT_FILE)
@@ -33,4 +33,4 @@ def main(text):
     else:
         print(f"File {OUTPUT_FILE} not found.")
 
-main('Hey sir this is Jarvis, this is my first voice hope you like it')
+speak("welcome back from college boss, anything i can help you with?")

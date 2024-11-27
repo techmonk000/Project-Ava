@@ -33,11 +33,14 @@ def wav_to_text(audio_path):
     text = ''.join(segment.text for segment in segments)
     return text
 
-stop_listening = start_listening()
+def listen():
+    stop_listening = start_listening()
 
-try:
-    while True:
-        time.sleep(0.1)
-except KeyboardInterrupt:
-    stop_listening(wait_for_stop=False)
-    print("Stopped listening.")
+
+    try:
+        while True:
+            time.sleep(0.1)
+    except KeyboardInterrupt:
+        stop_listening(wait_for_stop=False)
+        print("Stopped listening.")
+listen()

@@ -1,11 +1,27 @@
 {
     "cSpell.words": [
+        "Akew",
+        "BAAI",
+        "blit",
+        "codellama",
+        "deepinfra",
+        "dotenv",
+        "dtype",
+        "Ebzaitk",
+        "estas",
+        "incineroar",
         "KHTML",
+        "llava",
+        "llms",
         "namaste",
+        "ollama",
         "punkt",
         "pygame",
+        "smoothscale",
+        "stabilityai",
         "wavfile",
-        "wordnet"
+        "wordnet",
+        "Wvgsvd"
     ],
     "python.languageServer": "Pylance",
     "python.analysis.diagnosticSeverityOverrides": {
